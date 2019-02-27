@@ -1,0 +1,19 @@
+{
+  "name": "Battlesnake Download Tool",
+  "version": "1.0",
+  "description": "Enables downloading turn inputs for snakes",
+  "manifest_version": 2,
+  "permissions": [
+    "declarativeContent",
+    "storage",
+    "tabs",
+    "https://play.battlesnake.io/g/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action": {
+    "default_popup": "popup.html"
+  }
+}
