@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(function() {
       {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostEquals: 'play.battlesnake.io' }
+            pageUrl: { hostEquals: 'play.battlesnake.com' }
           })
         ],
         actions: [new chrome.declarativeContent.ShowPageAction()]

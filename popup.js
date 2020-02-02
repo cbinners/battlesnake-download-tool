@@ -15,7 +15,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
   console.log('LOADED')
   let gameId = tabs[0].url.match(regex)[1]
 
-  fetch('https://engine.battlesnake.io/games/' + gameId, {
+  fetch('https://engine.battlesnake.com/games/' + gameId, {
     method: 'GET'
   })
     .then(res => res.json())
