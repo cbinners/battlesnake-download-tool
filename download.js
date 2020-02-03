@@ -1,6 +1,6 @@
 function buildUrl(game, turn) {
   return (
-    'https://engine.battlesnake.io/games/' +
+    'https://engine.battlesnake.com/games/' +
     game +
     '/frames?offset=' +
     turn +
@@ -59,7 +59,7 @@ function transformFrameToInput(game, frameData) {
 window.__regex = /\/g\/(.+)?\//
 window.__gameId = window.location.href.match(window.__regex)[1]
 
-fetch('https://engine.battlesnake.io/games/' + window.__gameId, {
+fetch('https://engine.battlesnake.com/games/' + window.__gameId, {
   method: 'GET'
 })
   .then(res => res.json())

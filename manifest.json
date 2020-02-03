@@ -7,7 +7,7 @@
     "declarativeContent",
     "storage",
     "tabs",
-    "https://play.battlesnake.io/g/*"
+    "https://play.battlesnake.com/g/*"
   ],
   "background": {
     "scripts": ["background.js"],
