@@ -48,7 +48,21 @@ function transformFrameToInput(game, frameData) {
       id: game.Game.ID,
       ruleset: {
         name: game.Game.Ruleset.name,
-        version: ""
+        version: "",
+        settings: {
+          foodSpawnChance: parseInt(game.Game.Ruleset.foodSpawnChance),
+          minimumFood: parseInt(game.Game.Ruleset.minimumFood),
+          hazardDamagePerTurn: parseInt(game.Game.Ruleset.damagePerTurn),
+          royale: {
+            shrinkEveryNTurns: parseInt(game.Game.Ruleset.shrinkEveryNTurns)
+          },
+          squad: {
+            allowBodyCollisions: game.Game.Ruleset.allowBodyCollisions === 'true',
+            sharedElimination: game.Game.Ruleset.sharedElimination === 'true',
+            sharedHealth: game.Game.Ruleset.sharedHealth === 'true',
+            sharedLength: game.Game.Ruleset.sharedLength === 'true'
+          }
+        }
       },
       timeout: game.Game.SnakeTimeout
     },
