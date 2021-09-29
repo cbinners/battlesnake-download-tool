@@ -16,11 +16,16 @@ function transformPoint(point) {
 }
 
 function transformSnake(snake) {
+  let body = snake.Body.map(transformPoint)
   return {
     id: snake.ID,
     name: snake.Name,
-    body: snake.Body.map(transformPoint),
-    health: snake.Health
+    body: body,
+    head: body[0],
+    length: body.length,
+    health: snake.Health,
+    shout: snake.Shout,
+    squad: snake.Squad
   }
 }
 
@@ -40,7 +45,26 @@ function transformFrameToInput(game, frameData) {
 
   return {
     game: {
-      id: game.Game.ID
+      id: game.Game.ID,
+      ruleset: {
+        name: game.Game.Ruleset.name,
+        version: "",
+        settings: {
+          foodSpawnChance: parseInt(game.Game.Ruleset.foodSpawnChance),
+          minimumFood: parseInt(game.Game.Ruleset.minimumFood),
+          hazardDamagePerTurn: parseInt(game.Game.Ruleset.damagePerTurn),
+          royale: {
+            shrinkEveryNTurns: parseInt(game.Game.Ruleset.shrinkEveryNTurns)
+          },
+          squad: {
+            allowBodyCollisions: game.Game.Ruleset.allowBodyCollisions === 'true',
+            sharedElimination: game.Game.Ruleset.sharedElimination === 'true',
+            sharedHealth: game.Game.Ruleset.sharedHealth === 'true',
+            sharedLength: game.Game.Ruleset.sharedLength === 'true'
+          }
+        }
+      },
+      timeout: game.Game.SnakeTimeout
     },
     turn: data.Turn,
     board: {
@@ -50,7 +74,8 @@ function transformFrameToInput(game, frameData) {
       snakes: data.Snakes.filter(snake => snake.Death == null).map(
         transformSnake
       ),
-      food: data.Food.map(transformPoint)
+      food: data.Food.map(transformPoint),
+      hazards: data.Hazards.map(transformPoint)
     },
     you
   }
